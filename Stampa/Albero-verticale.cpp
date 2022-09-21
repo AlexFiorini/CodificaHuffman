@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-
+#include <malloc.h>
 
 #define PARENT(i) ((i-1) / 2)
 #define NUM_NODES 15
