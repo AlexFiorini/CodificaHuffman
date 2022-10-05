@@ -36,24 +36,9 @@ char* readinput()
     	strcpy(input+inputlen, tempbuf);
     	inputlen += templen;
 	} while (templen==CHUNK-1 && tempbuf[CHUNK-2]!='\n');
+	int size = strlen(input);
+	input[size-1] = '\0';
 	return input;
-}
-
-void RemoveChars(char *s, char c)
-{
-    int writer = 0, reader = 0;
-
-    while (s[reader])
-    {
-        if (s[reader]!=c) 
-        {   
-            s[writer++] = s[reader];
-        }
-
-        reader++;       
-    }
-
-    s[writer]=0;
 }
 
 int main ()
@@ -61,11 +46,7 @@ int main ()
 	char ch;
 	int i, r=0, c=0, mat[100][100], freccia=26, j, k, tempc[100], tempv, max, shift=0, car=0, ultimo;
 	string l;
-	FILE *fp;
 	COORD coord;
-	
-	
-	fp=fopen("prova.txt", "w");
 	
 	for(r=0;r<100;r++)
 	{
@@ -88,8 +69,6 @@ int main ()
 	i=Lunghezza(s);
 	l=s;
 	
-	RemoveChars(s, (char)10);
-	
 	for(i=0;i<=255;i++)										//Conta caratteri
 	{
 		ch=i;
@@ -110,7 +89,7 @@ int main ()
 	{
 		if(mat[r][N]!=0)
 		{
-			printf("%d ->\n", mat[r][0]);
+			printf("%c -> %d\n", mat[r][0], mat[r][N]);
 		}
 	}
 	
@@ -142,7 +121,7 @@ int main ()
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 		if(mat[r][N]!=0)
 		{
-			fprintf(fp, "%c -> %d\n", mat[r][0],  mat[r][N]);
+			printf("%c -> %d\n", mat[r][0],  mat[r][N]);
 			coord.Y=coord.Y+1;
 			max++;
 		}
