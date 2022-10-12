@@ -9,4 +9,6 @@ https://stackoverflow.com/questions/15397728/c-pointer-to-array-of-pointers-to-s
 
 Provare a creare i nodi ma non a metterli nell'albero così da capire come mettere i numeri in ordine
 
-1 a destra e 0 a sinistra
+1 a destra e 0 a sinistra (vedere in base a come si costruisce l'albero)
+
+Costruire dal basso, prendere ogni volta gli ultimi due (quelli con frequenza minore) ed unirli con un nodo intermedio.
