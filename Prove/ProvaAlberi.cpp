@@ -9,7 +9,7 @@
 
 typedef struct Nodo{
     int freq;	//Somma dei nodi nel nodo intermedio
-    char lett; //Non c'e^ nel nodo intermedio
+    char lett; //Vale (char)3 nel nodo intermedio
     char *codifica;
     struct Nodo *sx;
     struct Nodo *dx;
@@ -18,12 +18,12 @@ typedef struct Nodo{
 Nodo* Crea(char lett, int freq);
 char* readinput();
 void contacaratteri(char* arr, int freq[]);
-void swap(Nodo* xp, Nodo* yp);
 void selectionSort();
-void sommanodi(Nodo* f, Nodo* q);
-void inorder(Nodo * f);
-void print2DUtil(Nodo * root, int space);
 void spostanull();
+void sommanodi(Nodo* f, Nodo* q);
+void Stampaalbero(Nodo * tree);
+int _print_t(Nodo * tree, int is_left, int offset, int depth, char s[20][255]);
+void print2DUtil(Nodo * root, int space);
 
 Nodo **p = new Nodo *[N];
 
@@ -61,17 +61,16 @@ int main()
 	
 	while(p[1]!=NULL)
 	{
-		
 		sommanodi(p[0], p[1]);
-		
-		for(i=0; i<N; i++)
+	/*	for(i=0; i<N; i++)
 		{
 			if(p[i]!=NULL)
-			if(p[i]!=NULL && (p[i]->sx!=NULL && p[i]->dx!=NULL));
-		}	
+			printf("%c-%d	", p[i]->lett, p[i]->freq);
+		}
+		printf("\n\n");*/
 	}
 	printf("Stampa albero\n");
-	inorder(p[0]);
+	print2DUtil(p[0],0);
 }
 
 Nodo* Crea(char lett, int freq)
@@ -152,6 +151,13 @@ void selectionSort()					//Riordina array p
 			}	
 		}
     }
+    
+	for(i=0; i<N; i++)
+	{
+		if(p[i]!=NULL)
+		printf("i=%d val=%d lett=%c\n", i, p[i]->freq, p[i]->lett);
+	}
+	printf("\n\n");
 }
 
 void spostanull()						//Metti i null alla fine di array p
@@ -196,17 +202,6 @@ void sommanodi(Nodo* f, Nodo* q)		//Somma i nodi e metti in nodo intermedio
 	selectionSort();
 }
 
-void inorder(Nodo *f)
-{
-	if(f!=NULL)
-	{
-		inorder(f->sx);
-		if(f->lett!=(char)3)
-		printf("lettera: %c\n", f->lett);
-		inorder(f->dx);
-	}
-}
-
 void print2DUtil(Nodo * root, int space) {
     if (root == NULL)
         return;
@@ -218,8 +213,75 @@ void print2DUtil(Nodo * root, int space) {
     for (int i = COUNT; i < space; i++)
         printf(" ");
 
-    if(root->lett!=(char)3)
     printf("%c\n", root -> lett);
     
     print2DUtil(root -> sx, space);
 }
+
+/*void Stampaalbero(Nodo * tree) 
+{
+    char s[20][255];
+    for (int i = 0; i < 20; i++)
+        sprintf(s[i], "%80s", " ");
+
+    _print_t(tree, 0, 0, 0, s);
+
+    for (int i = 0; i < 20; i++)
+        printf("%s\n", s[i]);
+}
+
+int _print_t(Nodo * tree, int is_left, int offset, int depth, char s[20][255]) 
+{
+    char b[20];
+    int width = 5;
+
+    if (!tree) return 0;
+
+    sprintf(b, "(%03d)", tree -> freq);
+
+    int left = _print_t(tree -> sx, 1, offset, depth + 1, s);
+    int right = _print_t(tree -> dx, 0, offset + left + width, depth + 1, s);
+
+    #ifdef COMPACT
+    for (int i = 0; i < width; i++)
+        s[depth][offset + left + i] = b[i];
+
+    if (depth && is_left) {
+
+        for (int i = 0; i < width + right; i++)
+            s[depth - 1][offset + left + width / 2 + i] = '-';
+
+        s[depth - 1][offset + left + width / 2] = '.';
+
+    } else if (depth && !is_left) {
+
+        for (int i = 0; i < left + width; i++)
+            s[depth - 1][offset - width / 2 + i] = '-';
+
+        s[depth - 1][offset + left + width / 2] = '.';
+    }
+    #else
+    for (int i = 0; i < width; i++)
+        s[2 * depth][offset + left + i] = b[i];
+
+    if (depth && is_left) {
+
+        for (int i = 0; i < width + right; i++)
+            s[2 * depth - 1][offset + left + width / 2 + i] = '-';
+
+        s[2 * depth - 1][offset + left + width / 2] = '+';
+        s[2 * depth - 1][offset + left + width + right + width / 2] = '+';
+
+    } else if (depth && !is_left) {
+
+        for (int i = 0; i < left + width; i++)
+            s[2 * depth - 1][offset - width / 2 + i] = '-';
+
+        s[2 * depth - 1][offset + left + width / 2] = '+';
+        s[2 * depth - 1][offset - width / 2 - 1] = '+';
+    }
+    #endif
+
+    return left + width + right;
+}
+*/
