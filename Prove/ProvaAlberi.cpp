@@ -6,6 +6,7 @@
 typedef struct Nodo{
     int freq;	//Somma dei nodi nel nodo intermedio
     char *lett; //Non c'e^ nel nodo intermedio
+    char *codifica;
     struct Nodo *sx;
     struct Nodo *dx;
 }Nodo;
@@ -169,8 +170,9 @@ void print2DUtil(Nodo * root, int space) {
   print2DUtil(root -> sx, space);
 }
 
-// Wrapper over print2DUtil()
 void print2D(Nodo * root) {
   // Pass initial space count as 0
   print2DUtil(root, 0);
 }
+
+
