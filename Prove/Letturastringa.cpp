@@ -21,7 +21,8 @@ char* readinput()
 int main()
 {
     char* result = readinput();
-    printf("%s", result);
+    FILE *fp=fopen("file.txt", "w");
+    fprintf(fp, "%s", result);
     free(result);
     return 0;
 }
