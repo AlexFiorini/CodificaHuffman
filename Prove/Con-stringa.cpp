@@ -21,21 +21,17 @@ void contacaratteri(char* arr, int freq[]);
 
 Nodo **p = new Nodo *[N];
 
-using namespace std;
-
 int main()
 {   
     int i=0, freq[255];
-    char *arr;
 	
 	for(i=0; i<N; i++)
 	{
 		p[i]=NULL;
 		freq[i]=0;
 	}
-
-	arr=readinput();
-	contacaratteri(arr, freq);
+	
+	contacaratteri(readinput(), freq);
 	
 	for(i=0; i<255; i++)
 	{			
@@ -47,7 +43,7 @@ int main()
 		{
 			p[i]=NULL;
 		}
-	};	
+	}
 }
 
 Nodo* Crea(char lett, int freq)
