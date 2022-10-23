@@ -7,9 +7,6 @@
 
 using namespace std;
 
-int Lunghezza (char s[100]);
-void Caratteri (char s[100]);
-
 int Lunghezza (char s[100])				//Calcola la lunghezza della stringa (spazi compresi)
 {
 	int i;
@@ -22,13 +19,19 @@ int Lunghezza (char s[100])				//Calcola la lunghezza della stringa (spazi compr
 	return i;
 }
 
-
 int main ()
 {
 	char s[100], ch;
-	int i, r=0, c=0, mat[100][100], freccia=26, j, k, tempc[100], tempv, max, shift=0, car=0, ultimo;
+	int i, r=0, c=0, freccia=26, j, k, tempc[100], tempv, max, shift=0, car=0, ultimo;
+	int **mat=new int *[100];
 	string l;
 	COORD coord;
+	
+	for(i=0;i<100;i++)
+	{
+		*(mat+i)=new int[100];
+	}
+	
 	
 	for(r=0;r<100;r++)
 	{
