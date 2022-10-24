@@ -48,21 +48,12 @@
 
 
 
-<!-- SUL PROGETTO -->
-## SUL PROGETTO
-
+<!-- INTRODUZIONE -->
+## INTRODUZIONE
+La codifica di Huffman è un algoritmo di codifica di simboli usato per la compressione dei dati, basato sul principio di trovare il modo migliore ed efficace per codificare delle stringhe attraverso la frequenza relativa di ciascun carattere.
+Il nostro compito era quello di riuscire a fare la codifica di Huffman utilizzando gli alberi binari.
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Ci sono molti fantastici modelli README disponibili su GitHub; tuttavia, non ne abbiamo trovato nessuno adatto alle nostre esigenze, quindi ne abbiamo creato uno migliorato. Voglio creare un modello README così sorprendente che sarà l'ultimo di cui avrai bisogno - penso che sia questo.
-
-Ecco perché:
-* Il nostro tempo dovrebbe essere concentrato sulla creazione di qualcosa di straordinario. Un progetto che risolve un problema e aiuta gli altri
-* Non dovresti svolgere le stesse attività più e più volte come la creazione di un README da zero
-* Dovresti implementare i principi DRY per il resto della tua vita :smile:
-
-Naturalmente, nessun modello servirà a tutti i progetti poiché le tue esigenze potrebbero essere diverse. Quindi ne aggiungerò altri nel prossimo futuro. Puoi anche suggerire modifiche eseguendo il fork di questo repository e creando una richiesta pull o aprendo un problema. Grazie a tutte le persone che hanno contribuito ad ampliare questo template!
-
-Usa `BLANK_README.md` per iniziare.
 
 <p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
 
