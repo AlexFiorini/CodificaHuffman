@@ -48,17 +48,11 @@ La codifica di Huffman è un algoritmo di codifica di simboli usato per la compr
 Il nostro compito era quello di riuscire a fare la codifica di Huffman utilizzando gli alberi binari.
 
 
-<p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
-
-
-
 ### Realizzato con
 
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)<br/>
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)<br/>
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)<br/>
-
-<p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
 
 
 
@@ -79,8 +73,6 @@ Il nostro compito era quello di riuscire a fare la codifica di Huffman utilizzan
    ```
 2. Esegui Step_1 o Step_2
 
-<p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
-
 
 
 <!-- USAGE EXAMPLES -->
@@ -88,16 +80,12 @@ Il nostro compito era quello di riuscire a fare la codifica di Huffman utilizzan
 
 _Fare riferimento alla [WIKI](https://github.com/AlexFiorini/CodificaHuffman/wiki)_
 
-<p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
-
 
 
 <!-- LICENSE -->
 ## Licenza
 
 Distribuito con licenza MIT. Per ulteriori informazioni, vedere `LICENSE.md`.
-
-<p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
 
 
 
