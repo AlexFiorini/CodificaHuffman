@@ -1,6 +1,4 @@
 # Codifica Huffman
-
-[![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com) 
 <br/>
 <!-- PROJECT LOGO -->
 <br />
