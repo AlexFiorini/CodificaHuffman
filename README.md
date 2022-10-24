@@ -32,17 +32,12 @@
         <li><a href="#Realizzato con">Realizzato con</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#Prerequisiti">Prerequisiti</a></li>
-        <li><a href="#Installazione">Installazione</a></li>
-      </ul>
-    </li>
+    <li><a href="#Prerequisiti">Prerequisiti</a></li>
+    <li><a href="#Installazione">Installazione</a></li>
     <li><a href="#Funzionamento">Funzionamento</a></li>
     <li><a href="#Contribuire">Contribuire</a></li>
     <li><a href="#Licenza">Licenza</a></li>
-    <li><a href="#Contact">Contact</a></li>
+    <li><a href="#Contatti">Contatti</a></li>
   </ol>
 </details>
 
@@ -69,10 +64,6 @@ Il nostro compito era quello di riuscire a fare la codifica di Huffman utilizzan
 
 
 <!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisiti
 
