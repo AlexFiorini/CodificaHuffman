@@ -11,7 +11,7 @@
   <p align="center">
     Codifica qualsiasi stringa!
     <br />
-    <a href="https://github.com/AlexFiorini/CodificaHuffman/wiki"><strong>Esplora il repository »</strong></a>
+    <a href="https://github.com/AlexFiorini/CodificaHuffman/wiki"><strong>Esplora la Wiki »</strong></a>
     <br />
     <br />
     <a href="https://github.com/AlexFiorini/CodificaHuffman/issues">Segnala un bug</a>
@@ -78,7 +78,7 @@ Il nostro compito era quello di riuscire a fare la codifica di Huffman utilizzan
 <!-- USAGE EXAMPLES -->
 ## Funzionamento
 
-_Fare riferimento alla [WIKI](https://github.com/AlexFiorini/CodificaHuffman/wiki)_
+_Fare riferimento alla [Wiki](https://github.com/AlexFiorini/CodificaHuffman/wiki)_
 
 
 
