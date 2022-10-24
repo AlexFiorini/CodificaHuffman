@@ -28,9 +28,11 @@ void EncodeSuccinct(Nodo *root, list<bool> &struc, list<int> &data);
 void print2DUtil(Nodo * root, int space);
 void Stampaalbero(Nodo * tree);
 int _print_t(Nodo * tree, int is_left, int offset, int depth, char s[20][255]);
+void codificacaratteri(Nodo* f, int j, char lettera);
 
 
 Nodo **p = new Nodo *[N];
+int flag = 0;
 
 int main()
 {	
@@ -77,6 +79,7 @@ int main()
 	//printf("Stampa albero\n");
 	//Stampaalbero(p[0]);
 	//print2DUtil(p[0],0);
+	codificacaratteri(p[0], 0, 'a');
 }
 
 Nodo* Crea(char lett, int freq)
@@ -230,23 +233,27 @@ void sommanodi(Nodo* f, Nodo* q)		//Somma i nodi e metti in nodo intermedio
 	printf("\n\n");
 }
 
-void codificacaratteri(Nodo* f, int j, char lettera, int flag)
+void codificacaratteri(Nodo* f, int j, char lettera)
 {
     if(f!=NULL)
     {
         j++;
-        codificacaratteri(f->sx, j, num, flag);
+        codificacaratteri(f->sx, j, lettera);
         if(flag==1)
         {
         	printf("0");
 		}
-		codificacaratteri(f->dx, j, num, flag);
 		if(flag==1)
         {
         	printf("1");
 		}
-        if(p->lett==lettera)
+		else
+		{
+			codificacaratteri(f->dx, j, lettera);	
+		}
+        if(f->lett==lettera)
         {
+        	printf("Trovato\n");
             flag=1;
         }
     }
