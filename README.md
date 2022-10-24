@@ -11,7 +11,7 @@
   <p align="center">
     Codifica qualsiasi stringa!
     <br />
-    <a href="https://github.com/AlexFiorini/CodificaHuffman/wiki"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/AlexFiorini/CodificaHuffman/wiki"><strong>Esplora il repository »</strong></a>
     <br />
     <br />
     <a href="https://github.com/AlexFiorini/CodificaHuffman/issues">Segnala un bug</a>
