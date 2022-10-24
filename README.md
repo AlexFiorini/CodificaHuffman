@@ -37,8 +37,8 @@
         <li><a href="#Installazione">Installazione</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#Funzionamento">Funzionamento</a></li>
+    <li><a href="#Contribuire">Contribuire</a></li>
     <li><a href="#Licenza">Licenza</a></li>
     <li><a href="#Contact">Contact</a></li>
   </ol>
@@ -102,17 +102,17 @@ To get a local copy up and running follow these simple example steps.
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Funzionamento
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [WIKI](https://github.com/AlexFiorini/CodificaHuffman/wiki)_
+_Per maggiori esempi, fare riferimento alla [WIKI](https://github.com/AlexFiorini/CodificaHuffman/wiki)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+## Contribuire
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
