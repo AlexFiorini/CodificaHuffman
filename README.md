@@ -96,9 +96,7 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Funzionamento
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_Per maggiori esempi, fare riferimento alla [WIKI](https://github.com/AlexFiorini/CodificaHuffman/wiki)_
+_Fare riferimento alla [WIKI](https://github.com/AlexFiorini/CodificaHuffman/wiki)_
 
 <p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
 
