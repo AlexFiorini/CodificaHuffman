@@ -14,7 +14,7 @@
     <br />
     <a href="https://github.com/AlexFiorini/CodificaHuffman/issues">Segnala un bug</a>
     ·
-    <a href="https://github.com/AlexFiorini/CodificaHuffman/issues">Richiesta funzioni aggiuntive</a>
+    <a href="https://github.com/AlexFiorini/CodificaHuffman/issues">Richiedi funzionalità</a>
   </p>
 </div>
 
