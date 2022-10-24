@@ -4,13 +4,16 @@
 #include <string.h>
 #include <windows.h>
 #include <malloc.h>
+#include <bits/stdc++.h>
 #define COUNT 10
 #define N 255
+
+using namespace std;
 
 typedef struct Nodo{
     int freq;	//Somma dei nodi nel nodo intermedio
     char lett; //Vale (char)3 nel nodo intermedio
-    char *codifica;
+    int codifica;
     struct Nodo *sx;
     struct Nodo *dx;
 }Nodo;
@@ -21,9 +24,11 @@ void contacaratteri(char* arr, int freq[]);
 void selectionSort();
 void spostanull();
 void sommanodi(Nodo* f, Nodo* q);
+void EncodeSuccinct(Nodo *root, list<bool> &struc, list<int> &data);
+void print2DUtil(Nodo * root, int space);
 void Stampaalbero(Nodo * tree);
 int _print_t(Nodo * tree, int is_left, int offset, int depth, char s[20][255]);
-void print2DUtil(Nodo * root, int space);
+
 
 Nodo **p = new Nodo *[N];
 
@@ -69,8 +74,9 @@ int main()
 		}
 		printf("\n\n");*/
 	}
-	printf("Stampa albero\n");
-	print2DUtil(p[0],0);
+	//printf("Stampa albero\n");
+	//Stampaalbero(p[0]);
+	//print2DUtil(p[0],0);
 }
 
 Nodo* Crea(char lett, int freq)
@@ -151,13 +157,6 @@ void selectionSort()					//Riordina array p
 			}	
 		}
     }
-    
-	for(i=0; i<N; i++)
-	{
-		if(p[i]!=NULL)
-		printf("i=%d val=%d lett=%c\n", i, p[i]->freq, p[i]->lett);
-	}
-	printf("\n\n");
 }
 
 void spostanull()						//Metti i null alla fine di array p
@@ -176,8 +175,29 @@ void spostanull()						//Metti i null alla fine di array p
 	}
 }
 
+void spostanodiint()
+{
+	int k, l, i;
+	Nodo *temp=NULL;
+	
+	for(l=0;l<255;l++)
+	{
+		for(k=1;k<255;k++)
+		{
+			if((p[l]!=NULL && p[k]!=NULL) && (p[l]->lett == (char)3) && (p[k]->freq == p[k]->freq))
+			{
+				temp=p[l];
+				p[l]=p[k];
+				p[k]=temp;
+				Sleep(1);
+			}
+		}
+	}
+}
+
 void sommanodi(Nodo* f, Nodo* q)		//Somma i nodi e metti in nodo intermedio
 {
+	int i;
 	Nodo* inte=(Nodo*)malloc(sizeof(Nodo));
 	inte->dx=(Nodo*)malloc(sizeof(Nodo));
 	inte->sx=(Nodo*)malloc(sizeof(Nodo));
@@ -200,9 +220,40 @@ void sommanodi(Nodo* f, Nodo* q)		//Somma i nodi e metti in nodo intermedio
 	
 	spostanull();
 	selectionSort();
+	spostanodiint();
+	
+	for(i=0; i<N; i++)
+	{
+		if(p[i]!=NULL)
+		printf("i=%d val=%d lett=%c\n", i, p[i]->freq, p[i]->lett);
+	}
+	printf("\n\n");
 }
 
-void print2DUtil(Nodo * root, int space) {
+void codificacaratteri(Nodo* f, int j, char lettera, int flag)
+{
+    if(f!=NULL)
+    {
+        j++;
+        codificacaratteri(f->sx, j, num, flag);
+        if(flag==1)
+        {
+        	printf("0");
+		}
+		codificacaratteri(f->dx, j, num, flag);
+		if(flag==1)
+        {
+        	printf("1");
+		}
+        if(p->lett==lettera)
+        {
+            flag=1;
+        }
+    }
+}
+
+void print2DUtil(Nodo * root, int space) 
+{
     if (root == NULL)
         return;
 
@@ -218,70 +269,67 @@ void print2DUtil(Nodo * root, int space) {
     print2DUtil(root -> sx, space);
 }
 
-/*void Stampaalbero(Nodo * tree) 
+void Stampaalbero(Nodo * tree) 
 {
     char s[20][255];
-    for (int i = 0; i < 20; i++)
-        sprintf(s[i], "%80s", " ");
+    int i;
+    
+    for (i=0; i<20; i++)
+    {
+   		sprintf(s[i], "%80s", " ");
+	}
+        
 
     _print_t(tree, 0, 0, 0, s);
 
-    for (int i = 0; i < 20; i++)
+    for (i=0; i<20; i++)
+    {
         printf("%s\n", s[i]);
+	}
 }
 
 int _print_t(Nodo * tree, int is_left, int offset, int depth, char s[20][255]) 
 {
     char b[20];
-    int width = 5;
+    int width=3, left, right, i;
 
-    if (!tree) return 0;
+    if (!tree)
+	{
+    	return 0;	
+	}
 
-    sprintf(b, "(%03d)", tree -> freq);
+    sprintf(b, "(%c)", tree -> lett);
 
-    int left = _print_t(tree -> sx, 1, offset, depth + 1, s);
-    int right = _print_t(tree -> dx, 0, offset + left + width, depth + 1, s);
+    left = _print_t(tree -> sx, 1, offset, depth + 1, s);
+    right = _print_t(tree -> dx, 0, offset + left + width, depth + 1, s);
 
-    #ifdef COMPACT
-    for (int i = 0; i < width; i++)
-        s[depth][offset + left + i] = b[i];
+    for (i=0; i<width; i++)
+    {
+    	s[2 * depth][offset + left + i] = b[i];
+	}
+	
+    if (depth && is_left) 
+	{
 
-    if (depth && is_left) {
-
-        for (int i = 0; i < width + right; i++)
-            s[depth - 1][offset + left + width / 2 + i] = '-';
-
-        s[depth - 1][offset + left + width / 2] = '.';
-
-    } else if (depth && !is_left) {
-
-        for (int i = 0; i < left + width; i++)
-            s[depth - 1][offset - width / 2 + i] = '-';
-
-        s[depth - 1][offset + left + width / 2] = '.';
-    }
-    #else
-    for (int i = 0; i < width; i++)
-        s[2 * depth][offset + left + i] = b[i];
-
-    if (depth && is_left) {
-
-        for (int i = 0; i < width + right; i++)
-            s[2 * depth - 1][offset + left + width / 2 + i] = '-';
-
+        for (i=0; i<width+right; i++)
+        {
+        	s[2 * depth - 1][offset + left + width / 2 + i] = '-';
+		}
+		
         s[2 * depth - 1][offset + left + width / 2] = '+';
         s[2 * depth - 1][offset + left + width + right + width / 2] = '+';
+    } 
+	else if (depth && !is_left) 
+	{
 
-    } else if (depth && !is_left) {
-
-        for (int i = 0; i < left + width; i++)
-            s[2 * depth - 1][offset - width / 2 + i] = '-';
+        for ( i=0; i<left+width; i++)
+        {
+        	s[2 * depth - 1][offset - width / 2 + i] = '-';	
+		}
 
         s[2 * depth - 1][offset + left + width / 2] = '+';
         s[2 * depth - 1][offset - width / 2 - 1] = '+';
     }
-    #endif
 
     return left + width + right;
 }
-*/
