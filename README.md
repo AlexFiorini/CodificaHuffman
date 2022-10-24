@@ -22,7 +22,7 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Sommario</summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -38,7 +38,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -67,7 +66,7 @@ Use the `BLANK_README.md` to get started.
 
 
 
-### Built With
+### Realizzato con
 
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)<br/>
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)<br/>
@@ -83,22 +82,20 @@ Use the `BLANK_README.md` to get started.
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+### Prerequisiti
 
-This is an example of how to list things you need to use the software and how to install them.
-* Mingw-w64 (or another C compiler)
+* Mingw-w64 (o un altro compilatore C)
   ```sh
   https://www.mingw-w64.org/
   ```
 
-### Installation
+### Installazione
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Clone the repo
+1. Clona il repository
    ```sh
    git clone https://github.com/AlexFiorini/CodificaHuffman.git
    ```
+2. Esegui Step_1 o Step_2
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -112,24 +109,6 @@ Use this space to show useful examples of how a project can be used. Additional 
 _For more examples, please refer to the [WIKI](https://github.com/AlexFiorini/CodificaHuffman/wiki)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
