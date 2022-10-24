@@ -48,21 +48,21 @@
 
 
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+<!-- SUL PROGETTO -->
+## SUL PROGETTO
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Ci sono molti fantastici modelli README disponibili su GitHub; tuttavia, non ne abbiamo trovato nessuno adatto alle nostre esigenze, quindi ne abbiamo creato uno migliorato. Voglio creare un modello README così sorprendente che sarà l'ultimo di cui avrai bisogno - penso che sia questo.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+Ecco perché:
+* Il nostro tempo dovrebbe essere concentrato sulla creazione di qualcosa di straordinario. Un progetto che risolve un problema e aiuta gli altri
+* Non dovresti svolgere le stesse attività più e più volte come la creazione di un README da zero
+* Dovresti implementare i principi DRY per il resto della tua vita :smile:
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+Naturalmente, nessun modello servirà a tutti i progetti poiché le tue esigenze potrebbero essere diverse. Quindi ne aggiungerò altri nel prossimo futuro. Puoi anche suggerire modifiche eseguendo il fork di questo repository e creando una richiesta pull o aprendo un problema. Grazie a tutte le persone che hanno contribuito ad ampliare questo template!
 
-Use the `BLANK_README.md` to get started.
+Usa `BLANK_README.md` per iniziare.
 
 <p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
 
