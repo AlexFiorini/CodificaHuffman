@@ -62,7 +62,7 @@ Of course, no one template will serve all projects since your needs may be diffe
 
 Use the `BLANK_README.md` to get started.
 
-<p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
+<p align="right">(<a href="#Codifica Huffman">Torna in alto</a>)</p>
 
 
 
@@ -72,7 +72,7 @@ Use the `BLANK_README.md` to get started.
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)<br/>
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)<br/>
 
-<p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
+<p align="right">(<a href="#Codifica Huffman">Torna in alto</a>)</p>
 
 
 
@@ -97,7 +97,7 @@ To get a local copy up and running follow these simple example steps.
    ```
 2. Esegui Step_1 o Step_2
 
-<p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
+<p align="right">(<a href="#Codifica Huffman">Torna in alto</a>)</p>
 
 
 
@@ -108,7 +108,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 _Per maggiori esempi, fare riferimento alla [WIKI](https://github.com/AlexFiorini/CodificaHuffman/wiki)_
 
-<p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
+<p align="right">(<a href="#Codifica Huffman">Torna in alto</a>)</p>
 
 
 <!-- CONTRIBUTING -->
@@ -125,7 +125,7 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
+<p align="right">(<a href="#Codifica Huffman">Torna in alto</a>)</p>
 
 
 
@@ -134,7 +134,7 @@ Don't forget to give the project a star! Thanks again!
 
 Distribuito con licenza MIT. Per ulteriori informazioni, vedere `LICENSE.md`.
 
-<p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
+<p align="right">(<a href="#Codifica Huffman">Torna in alto</a>)</p>
 
 
 
@@ -143,4 +143,4 @@ Distribuito con licenza MIT. Per ulteriori informazioni, vedere `LICENSE.md`.
 
 Alex Fiorini - [Stack Overflow](https://stackoverflow.com/users/19370254/alex-fiorini) - fiorini.alex48@gmail.com
 
-<p align="right">(<a href="#readme-top">Torna in alto</a>)</p>
+<p align="right">(<a href="#Codifica Huffman">Torna in alto</a>)</p>
