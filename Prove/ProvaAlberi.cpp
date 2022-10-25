@@ -13,7 +13,7 @@ using namespace std;
 typedef struct Nodo{
     int freq;	//Somma dei nodi nel nodo intermedio
     char lett;  //Vale (char)3 nel nodo intermedio
-    int codifica;
+    int codifica[255];
     struct Nodo *sx;
     struct Nodo *dx;
 }Nodo;
@@ -21,32 +21,37 @@ typedef struct Nodo{
 Nodo* Crea(char lett, int freq);
 char* readinput();
 void contacaratteri(char* arr, int freq[]);
+void presenza(char* arr, int lett[]);
+//Ordinamento e somma
 void selectionSort();
 void spostanull();
 void sommanodi(Nodo* f, Nodo* q);
-void EncodeSuccinct(Nodo *root, list<bool> &struc, list<int> &data);
+//Step 2.2
+void codificacaratteri(Nodo* f, char lettera, int i, int codi[]);
+//Stampa albero
 void print2DUtil(Nodo * root, int space);
 void Stampaalbero(Nodo * tree);
 int _print_t(Nodo * tree, int is_left, int offset, int depth, char s[20][255]);
-void codificacaratteri(Nodo* f, int j, char lettera);
 
 
 Nodo **p = new Nodo *[N];
-int flag = 0;
 
 int main()
 {	
-    int i=0, freq[255];
-	
+    int i=0, freq[N], codifica[N], lettere[N];
+	char *stringa;
 	for(i=0; i<N; i++)
 	{
 		p[i]=NULL;
 		freq[i]=0;
+		codifica[i]=2;
 	}
 	
-	contacaratteri(readinput(), freq);
+	stringa=readinput();
+	contacaratteri(stringa, freq);
+	presenza(stringa, lettere);
 	
-	for(i=0; i<255; i++)
+	for(i=0; i<N; i++)
 	{			
 		if(freq[i]!=0)
 		{
@@ -69,17 +74,24 @@ int main()
 	while(p[1]!=NULL)
 	{
 		sommanodi(p[0], p[1]);
-	/*	for(i=0; i<N; i++)
-		{
-			if(p[i]!=NULL)
-			printf("%c-%d	", p[i]->lett, p[i]->freq);
-		}
-		printf("\n\n");*/
 	}
 	//printf("Stampa albero\n");
 	//Stampaalbero(p[0]);
-	//print2DUtil(p[0],0);
-	codificacaratteri(p[0], 0, 'a');
+	print2DUtil(p[0],0);
+	for(i=0; i<N; i++)
+	{
+		if(lettere[i]==1)
+		{
+			codificacaratteri(p[0], (char)i, 0, codifica);
+			printf("%c -> ", char(i));
+			for(i=0; i<N; i++)
+			{
+				if(codifica[i]>1)
+					printf("%d", codifica[i]);
+			}
+			printf("\n");
+		}
+	}	
 }
 
 Nodo* Crea(char lett, int freq)
@@ -113,7 +125,7 @@ void contacaratteri(char* arr, int freq[])		//Calcola frequenza lettere
 {
 	int i=0, j=0;
 	
-	for(i=0;i<=255;i++)
+	for(i=0;i<=N;i++)
 	{
 		if(i!=10 && i!=13)
 		{
@@ -126,6 +138,26 @@ void contacaratteri(char* arr, int freq[])		//Calcola frequenza lettere
 				j++;
 			}while(arr[j]!='\0');
 			j=0;
+		}
+	}
+}
+
+void presenza(char* arr, int lett[])
+{
+	int i, j=0;
+	
+	for(i=0; i<N; i++)
+	{
+		if(i!=10 && i!=13)
+		{
+			do
+			{
+				if((char)i==arr[j])
+				{
+					lett[i]=1;
+				}
+				j++;
+			}while(arr[j]!='\0');
 		}
 	}
 }
@@ -165,9 +197,9 @@ void selectionSort()					//Riordina array p
 void spostanull()						//Metti i null alla fine di array p
 {
 	int i, j;
-	for(j=0;j<255;j++)
+	for(j=0;j<N;j++)
 	{
-		for(i=0;i<255;i++)
+		for(i=0;i<N;i++)
 		{
 			if(p[i]==NULL)
 			{
@@ -183,9 +215,9 @@ void spostanodiint()
 	int k, l, i;
 	Nodo *temp=NULL;
 	
-	for(l=0;l<255;l++)
+	for(l=0;l<N;l++)
 	{
-		for(k=1;k<255;k++)
+		for(k=1;k<N;k++)
 		{
 			if((p[l]!=NULL && p[k]!=NULL) && (p[l]->lett == (char)3) && (p[k]->freq == p[k]->freq))
 			{
@@ -233,30 +265,31 @@ void sommanodi(Nodo* f, Nodo* q)		//Somma i nodi e metti in nodo intermedio
 	printf("\n\n");
 }
 
-void codificacaratteri(Nodo* f, int j, char lettera)
+void codificacaratteri(Nodo* f, char lettera, int i, int codi[])
 {
-    if(f!=NULL)
-    {
-        j++;
-        codificacaratteri(f->sx, j, lettera);
-        if(flag==1)
-        {
-        	printf("0");
-		}
-		if(flag==1)
-        {
-        	printf("1");
+	if(f!=NULL)
+	{
+		if(f->lett==lettera)
+		{
+			for(int j=0; j<N; j++)
+			{
+				f->codifica[j]=codi[j];
+			}
 		}
 		else
 		{
-			codificacaratteri(f->dx, j, lettera);	
+			if(f->sx->lett==lettera)
+			{
+				codi[i]=0;
+			}
+			else
+			{
+				codi[i]=1;
+				i++;
+				codificacaratteri(f->dx, lettera, i, codi);
+			}
 		}
-        if(f->lett==lettera)
-        {
-        	printf("Trovato\n");
-            flag=1;
-        }
-    }
+	}
 }
 
 void print2DUtil(Nodo * root, int space) 
@@ -278,7 +311,7 @@ void print2DUtil(Nodo * root, int space)
 
 void Stampaalbero(Nodo * tree) 
 {
-    char s[20][255];
+    char s[20][N];
     int i;
     
     for (i=0; i<20; i++)
@@ -295,7 +328,7 @@ void Stampaalbero(Nodo * tree)
 	}
 }
 
-int _print_t(Nodo * tree, int is_left, int offset, int depth, char s[20][255]) 
+int _print_t(Nodo * tree, int is_left, int offset, int depth, char s[20][N]) 
 {
     char b[20];
     int width=3, left, right, i;
