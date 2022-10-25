@@ -12,7 +12,7 @@ using namespace std;
 
 typedef struct Nodo{
     int freq;	//Somma dei nodi nel nodo intermedio
-    char lett; //Vale (char)3 nel nodo intermedio
+    char lett;  //Vale (char)3 nel nodo intermedio
     int codifica;
     struct Nodo *sx;
     struct Nodo *dx;
