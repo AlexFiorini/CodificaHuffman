@@ -12,10 +12,15 @@
 
 using namespace std;
 
+typedef struct Codifica{
+	int val;
+	struct Codifica *succ;
+}Codifica;
+
 typedef struct Nodo{
     int freq;	//Somma dei nodi nel nodo intermedio
     char lett;  //Vale (char)3 nel nodo intermedio
-    int codifica[N];
+    Codifica *codifica;
     struct Nodo *sx;
     struct Nodo *dx;
 }Nodo;
@@ -29,25 +34,22 @@ void selectionSort();
 void spostanull();
 void sommanodi(Nodo* f, Nodo* q);
 //Step 2.2
-void codificacaratteri(Nodo* f, char lettera, int i, int codi[]);
+void codificacaratteri(Nodo* f, char lettera, int i, Codifica* codi);
 //Stampa albero
 void print2DUtil(Nodo * root, int space);
-void Stampaalbero(Nodo * tree);
-int _print_t(Nodo * tree, int is_left, int offset, int depth, char s[20][255]);
-
 
 Nodo **p = new Nodo *[N];
 
 int main()
 {	
-    int i=0, j=0, freq[N], codifica[N], lettere[N];
+    int i=0, j=0, freq[N], lettere[N];
 	char *stringa;
+	Codifica *codi, *pointer;
 	
 	for(i=0; i<N; i++)
 	{
 		p[i]=NULL;
 		freq[i]=0;
-		codifica[i]=2;
 		lettere[i]=0;
 	}
 	
@@ -79,25 +81,25 @@ int main()
 	{
 		sommanodi(p[0], p[1]);
 	}
-	//printf("Stampa albero\n");
-	//Stampaalbero(p[0]);
+	
 	print2DUtil(p[0],0);
+	
 	for(i=0; i<N; i++)
 	{
+		codi=(Codifica*)malloc(sizeof(Codifica));
 		if(lettere[i]==1)
 		{
-			codificacaratteri(p[0], (char)i, 0, codifica);
+			codificacaratteri(p[0], (char)i, 0, codi);
 			printf("%c -> ", char(i));
-			for(j=0; j<N; j++)
+			pointer=codi;
+			do
 			{
-				if(codifica[j]<=1)
-				{
-					printf("%d", codifica[j]);
-				}
-				codifica[j]=2;
-			}
+				printf("%d", pointer->val);
+				pointer=pointer->succ;
+			}while(pointer!=NULL);
 			printf("\n");
 		}
+		free(codi);
 	}	
 }
 
@@ -273,7 +275,7 @@ void sommanodi(Nodo* f, Nodo* q)		//Somma i nodi e metti in nodo intermedio
 	printf("\n\n");
 }
 
-void codificacaratteri(Nodo* f, char lettera, int i, int codi[])
+void codificacaratteri(Nodo* f, char lettera, int i, Codifica* codi)
 {
 	int j;
 	
@@ -281,26 +283,21 @@ void codificacaratteri(Nodo* f, char lettera, int i, int codi[])
 	{
 		if(f->lett==lettera)
 		{
-			for(j=0; j<N; j++)
-			{
-				f->codifica[j]=codi[j];
-			}
+			f->codifica=codi;
 		}
 		else
 		{
 			if(f->sx->lett==lettera)
 			{
-				codi[i]=0;
-				for(j=0; j<N; j++)
-				{
-					f->codifica[j]=codi[j];
-				}
+				codi->val=0;
+				f->codifica=codi;
 			}
 			else
 			{
-				codi[i]=1;
+				codi->val=1;
 				i++;
-				codificacaratteri(f->dx, lettera, i, codi);
+				codi->succ=(Codifica*)malloc(sizeof(Codifica));
+				codificacaratteri(f->dx, lettera, i, codi->succ);
 			}
 		}
 	}
@@ -321,69 +318,4 @@ void print2DUtil(Nodo * root, int space)
     printf("%c\n", root -> lett);
     
     print2DUtil(root -> sx, space);
-}
-
-void Stampaalbero(Nodo * tree) 
-{
-    char s[20][N];
-    int i;
-    
-    for (i=0; i<20; i++)
-    {
-   		sprintf(s[i], "%80s", " ");
-	}
-        
-
-    _print_t(tree, 0, 0, 0, s);
-
-    for (i=0; i<20; i++)
-    {
-        printf("%s\n", s[i]);
-	}
-}
-
-int _print_t(Nodo * tree, int is_left, int offset, int depth, char s[20][N]) 
-{
-    char b[20];
-    int width=3, left, right, i;
-
-    if (!tree)
-	{
-    	return 0;	
-	}
-
-    sprintf(b, "(%c)", tree -> lett);
-
-    left = _print_t(tree -> sx, 1, offset, depth + 1, s);
-    right = _print_t(tree -> dx, 0, offset + left + width, depth + 1, s);
-
-    for (i=0; i<width; i++)
-    {
-    	s[2 * depth][offset + left + i] = b[i];
-	}
-	
-    if (depth && is_left) 
-	{
-
-        for (i=0; i<width+right; i++)
-        {
-        	s[2 * depth - 1][offset + left + width / 2 + i] = '-';
-		}
-		
-        s[2 * depth - 1][offset + left + width / 2] = '+';
-        s[2 * depth - 1][offset + left + width + right + width / 2] = '+';
-    } 
-	else if (depth && !is_left) 
-	{
-
-        for ( i=0; i<left+width; i++)
-        {
-        	s[2 * depth - 1][offset - width / 2 + i] = '-';	
-		}
-
-        s[2 * depth - 1][offset + left + width / 2] = '+';
-        s[2 * depth - 1][offset - width / 2 - 1] = '+';
-    }
-
-    return left + width + right;
 }
