@@ -18,9 +18,9 @@ typedef struct Codifica{
 }Codifica;
 
 typedef struct Nodo{
-    int freq;	//Somma dei nodi nel nodo intermedio
-    char lett;  //Vale (char)3 nel nodo intermedio
-    Codifica *codifica;
+    int freq;						//Somma dei nodi nel nodo intermedio
+    char lett;  					//Vale (char)3 nel nodo intermedio
+    char *codifica;
     struct Nodo *sx;
     struct Nodo *dx;
 }Nodo;
@@ -34,9 +34,12 @@ void selectionSort();
 void spostanull();
 void sommanodi(Nodo* f, Nodo* q);
 //Step 2.2
-void codificacaratteri(Nodo* f, char lettera, int i, Codifica* codi);
+void codificacaratteri(Nodo* f, char lettera, Codifica* codi);
+void salvacod(Nodo* f);
 //Stampa albero
 void print2DUtil(Nodo * root, int space);
+
+
 
 Nodo **p = new Nodo *[N];
 
@@ -45,6 +48,7 @@ int main()
     int i=0, j=0, freq[N], lettere[N];
 	char *stringa;
 	Codifica *codi, *pointer;
+	FILE *fp=fopen("Codifiche.txt", "wt");
 	
 	for(i=0; i<N; i++)
 	{
@@ -89,18 +93,24 @@ int main()
 		codi=(Codifica*)malloc(sizeof(Codifica));
 		if(lettere[i]==1)
 		{
-			codificacaratteri(p[0], (char)i, 0, codi);
-			printf("%c -> ", char(i));
+			codificacaratteri(p[0], (char)i, codi);
+			fprintf(fp, "%c ", char(i));
 			pointer=codi;
 			do
 			{
-				printf("%d", pointer->val);
+				fprintf(fp,"%d", pointer->val);
 				pointer=pointer->succ;
 			}while(pointer!=NULL);
-			printf("\n");
+			fprintf(fp, "\n");
 		}
 		free(codi);
-	}	
+	}
+	printf("\n\n");
+	fclose(fp);
+	
+	salvacod(p[0]);
+	//printf("h -> ");
+	//printf("%s", p[0]->sx->codifica);
 }
 
 Nodo* Crea(char lett, int freq)
@@ -275,32 +285,62 @@ void sommanodi(Nodo* f, Nodo* q)		//Somma i nodi e metti in nodo intermedio
 	printf("\n\n");
 }
 
-void codificacaratteri(Nodo* f, char lettera, int i, Codifica* codi)
+void codificacaratteri(Nodo* f, char lettera, Codifica* codi)
 {
 	int j;
 	
 	if(f!=NULL)
 	{
-		if(f->lett==lettera)
-		{
-			f->codifica=codi;
-		}
-		else
+		if(f->lett!=lettera)
 		{
 			if(f->sx->lett==lettera)
 			{
 				codi->val=0;
-				f->codifica=codi;
 			}
 			else
 			{
 				codi->val=1;
-				i++;
 				codi->succ=(Codifica*)malloc(sizeof(Codifica));
-				codificacaratteri(f->dx, lettera, i, codi->succ);
+				codificacaratteri(f->dx, lettera, codi->succ);
 			}
 		}
 	}
+}
+
+void salvacod(Nodo* f)
+{
+	char lett, c, *codifica, *nul;
+	FILE *fp=fopen("Codifiche.txt", "r");
+	
+	if(f->lett==(char)3)
+	{
+		salvacod(f->sx);
+		salvacod(f->dx);
+	}
+	else
+	{
+		do
+		{
+			lett=fgetc(fp);
+			printf("%c\n", lett);
+			if(lett!=f->lett);
+			{
+				c=fgetc(fp);		//Spazio
+				fgets(nul, N, fp);	//Codifica
+			}
+		}while(lett!=f->lett && feof(fp)==0);
+		
+		c=fgetc(fp);	//spazio
+		fgets(codifica, N, fp);
+		printf(codifica);
+		printf("A");
+		f->codifica=codifica;
+		if(f->dx!=NULL)
+		{
+			salvacod(f->dx);
+		}
+	}
+	fclose(fp);
 }
 
 void print2DUtil(Nodo * root, int space) 
