@@ -27,7 +27,7 @@
   <summary>Sommario</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#Introduzione">Introduzione</a>
       <ul>
         <li><a href="#Realizzato con">Realizzato con</a></li>
       </ul>
@@ -43,7 +43,7 @@
 
 
 <!-- INTRODUZIONE -->
-## INTRODUZIONE
+## Introduzione
 La codifica di Huffman è un algoritmo di codifica di simboli usato per la compressione dei dati, basato sul principio di trovare il modo migliore ed efficace per codificare delle stringhe attraverso la frequenza relativa di ciascun carattere.
 Il nostro compito era quello di riuscire a fare la codifica di Huffman utilizzando gli alberi binari.
 
