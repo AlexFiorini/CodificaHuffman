@@ -92,8 +92,8 @@ int main()
 				if(codifica[j]<=1)
 				{
 					printf("%d", codifica[j]);
-					codifica[j]=2;
 				}
+				codifica[j]=2;
 			}
 			printf("\n");
 		}
