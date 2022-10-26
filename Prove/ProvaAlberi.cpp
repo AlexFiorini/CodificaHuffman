@@ -42,6 +42,7 @@ int main()
 {	
     int i=0, j=0, freq[N], codifica[N], lettere[N];
 	char *stringa;
+	
 	for(i=0; i<N; i++)
 	{
 		p[i]=NULL;
