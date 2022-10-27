@@ -9,6 +9,8 @@
 #define N 255
 
 //ashdihewqiurhiuehzkjhdiasuhdiuheriuwheiurhw
+//Se inserisce pappagallo stampare curl parrot.live
+
 
 using namespace std;
 
@@ -37,8 +39,8 @@ void sommanodi(Nodo* f, Nodo* q);
 void codificacaratteri(Nodo* f, char lettera, Codifica* codi);
 void salvacod(Nodo* f);
 //Step 2.3
-char* codificapar(char *stringa, Nodo *f);
-char* cercanodo(Nodo *f, char lett);
+char* codificapar(char *stringa);
+char* recuperacod(char lettera);
 //Stampa albero
 void print2DUtil(Nodo * root, int space);
 
@@ -49,7 +51,7 @@ Nodo **p = new Nodo *[N];
 int main()
 {	
     int i=0, j=0, freq[N], lettere[N];
-	char *stringa;
+	char *stringa, *parola;
 	Codifica *codi, *pointer;
 //	FILE *fp=fopen("Codifiche.txt", "wt");
 	
@@ -89,6 +91,8 @@ int main()
 		sommanodi(p[0], p[1]);
 	}
 	
+	printf("\n\n\n\n\n\n");
+	printf("Stampa albero");
 	print2DUtil(p[0],0);
 	
 	/*for(i=0; i<N; i++)
@@ -112,10 +116,9 @@ int main()
 	fclose(fp);*/
 	
 	salvacod(p[0]);
-	printf("h -> ");
-	printf("%s", p[0]->sx->codifica);
-	
-	//printf("%s", codificapar(stringa, p[0]));
+	printf("\n\n\n\n\n");
+	parola=codificapar(stringa);
+	printf("Parola codificata: \n%s", parola);
 }
 
 Nodo* Crea(char lett, int freq)
@@ -366,31 +369,50 @@ void salvacod(Nodo* f)
 	fclose(fp);
 }
 
-char* codificapar(char *stringa, Nodo *f)
+char* codificapar(char *stringa)
 {
-	char parola[N]="";
-	int i=0;
+	char parola[N]="", codifica[N];
+	int i=0, j=strlen(stringa);
 	do
 	{
-		char *codi=cercanodo(f, stringa[i]);
-		printf("%s", codi);
-		//strcat(parola, codi);
+		char *codi=recuperacod(stringa[i]);
+		/*printf("%d ", i);
+		printf("%c ", stringa[i]);
+		printf(codi, "\n");*/
+		strcpy(codifica, codi);
+		strcat(parola, codi);
 		i++;
-	}while(stringa[i]!='\0');
+	}while(i<j-1);
+	return parola;
 }
 
-char* cercanodo(Nodo *f, char lett)		//Capire come ritornare ogni volta la codifica
+char* recuperacod(char lettera)
 {
-	char *a;
-	if(f!=NULL)
-    {
-        a=cercanodo(f->sx, lett);
-        a=cercanodo(f->dx, lett);
-        if(f->lett==lett)
-        {
-            return f->codifica;
-        }
-    }
+    char lett, c, nul[N], car[N], *six=NULL, *dix=NULL;
+    FILE *fp=fopen("Codifiche.txt", "r");
+	while(!feof(fp))
+	{
+		fscanf(fp, "%c", &lett);            //Leggi lettera
+		if(lett==lettera)
+		{
+			fscanf(fp, "%c", &c);         //Leggi spazio
+			fgets(car, N, fp);            //Leggi stringa
+			fclose(fp);
+			for(int i = 0; i < N; i++)
+			{
+				if(car[i]==char(10) || car[i]==char(13))
+				{
+					car[i] = (char) 0;
+				}
+			}
+			return car;
+		}
+		else
+		{
+			fscanf(fp, "%c", &c);         //Leggi spazio
+			fgets(car, N, fp);            //Leggi stringa
+		}
+	}
 }
 
 void print2DUtil(Nodo * root, int space) 
