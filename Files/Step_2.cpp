@@ -376,9 +376,6 @@ char* codificapar(char *stringa)
 	do
 	{
 		char *codi=recuperacod(stringa[i]);
-		/*printf("%d ", i);
-		printf("%c ", stringa[i]);
-		printf(codi, "\n");*/
 		strcpy(codifica, codi);
 		strcat(parola, codi);
 		i++;
