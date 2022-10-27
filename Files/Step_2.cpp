@@ -115,7 +115,7 @@ int main()
 	printf("h -> ");
 	printf("%s", p[0]->sx->codifica);
 	
-	printf("%s", codificapar(stringa, p[0]));
+	//printf("%s", codificapar(stringa, p[0]));
 }
 
 Nodo* Crea(char lett, int freq)
@@ -368,22 +368,24 @@ void salvacod(Nodo* f)
 
 char* codificapar(char *stringa, Nodo *f)
 {
-	char *parola="";
+	char parola[N]="";
 	int i=0;
 	do
 	{
 		char *codi=cercanodo(f, stringa[i]);
-		strcat(parola, codi);
+		printf("%s", codi);
+		//strcat(parola, codi);
 		i++;
 	}while(stringa[i]!='\0');
 }
 
 char* cercanodo(Nodo *f, char lett)
 {
+	char *a;
 	if(f!=NULL)
     {
-        cercanodo(f->sx, lett);
-        cercanodo(f->dx, lett);
+        a=cercanodo(f->sx, lett);
+        a=cercanodo(f->dx, lett);
         if(f->lett==lett)
         {
             return f->codifica;
