@@ -51,7 +51,7 @@ int main()
     int i=0, j=0, freq[N], lettere[N];
 	char *stringa;
 	Codifica *codi, *pointer;
-	FILE *fp=fopen("Codifiche.txt", "wt");
+//	FILE *fp=fopen("Codifiche.txt", "wt");
 	
 	for(i=0; i<N; i++)
 	{
@@ -108,8 +108,8 @@ int main()
 		}
 		free(codi);
 	}
-	printf("\n\n");*/
-	fclose(fp);
+	printf("\n\n");
+	fclose(fp);*/
 	
 	salvacod(p[0]);
 	printf("h -> ");
