@@ -379,7 +379,7 @@ char* codificapar(char *stringa, Nodo *f)
 	}while(stringa[i]!='\0');
 }
 
-char* cercanodo(Nodo *f, char lett)
+char* cercanodo(Nodo *f, char lett)		//Capire come ritornare ogni volta la codifica
 {
 	char *a;
 	if(f!=NULL)
