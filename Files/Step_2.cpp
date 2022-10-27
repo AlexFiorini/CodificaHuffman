@@ -36,6 +36,9 @@ void sommanodi(Nodo* f, Nodo* q);
 //Step 2.2
 void codificacaratteri(Nodo* f, char lettera, Codifica* codi);
 void salvacod(Nodo* f);
+//Step 2.3
+char* codificapar(char *stringa, Nodo *f);
+char* cercanodo(Nodo *f, char lett);
 //Stampa albero
 void print2DUtil(Nodo * root, int space);
 
@@ -88,7 +91,7 @@ int main()
 	
 	print2DUtil(p[0],0);
 	
-	for(i=0; i<N; i++)
+	/*for(i=0; i<N; i++)
 	{
 		codi=(Codifica*)malloc(sizeof(Codifica));
 		if(lettere[i]==1)
@@ -105,12 +108,14 @@ int main()
 		}
 		free(codi);
 	}
-	printf("\n\n");
+	printf("\n\n");*/
 	fclose(fp);
 	
 	salvacod(p[0]);
 	printf("h -> ");
 	printf("%s", p[0]->sx->codifica);
+	
+//	printf("%s", codificapar(stringa, p[0]));
 }
 
 Nodo* Crea(char lett, int freq)
@@ -359,6 +364,31 @@ void salvacod(Nodo* f)
 		}
 	}
 	fclose(fp);
+}
+
+char* codificapar(char *stringa, Nodo *f)
+{
+	char *parola="";
+	int i=0;
+	do
+	{
+		char *codi=cercanodo(f, stringa[i]);
+		strcat(parola, codi);
+		i++;
+	}while(stringa[i]!='\0');
+}
+
+char* cercanodo(Nodo *f, char lett)
+{
+	if(f!=NULL)
+    {
+        cercanodo(f->sx, lett);
+        cercanodo(f->dx, lett);
+        if(f->lett==lett)
+        {
+            return f->codifica;
+        }
+    }
 }
 
 void print2DUtil(Nodo * root, int space) 
