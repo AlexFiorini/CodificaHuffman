@@ -309,37 +309,52 @@ void codificacaratteri(Nodo* f, char lettera, Codifica* codi)
 
 void salvacod(Nodo* f)
 {
-	char lett, c, *codifica, *nul;
+	char lett, c, nul[N];
 	FILE *fp=fopen("Codifiche.txt", "r");
-	
-	if(f->lett==(char)3)
-	{
-		salvacod(f->sx);
-		salvacod(f->dx);
-	}
-	else
+	int i;
+	fseek(fp, 0, SEEK_END);
+	unsigned long position, end=ftell(fp);
+	fseek(fp, 0, SEEK_SET);
+		
+	i=-1;
+	lett=fgetc(fp);						//Leggi lettera
+	if(lett!=f->lett)
 	{
 		do
 		{
-			lett=fgetc(fp);
-			printf("%c\n", lett);
-			if(lett!=f->lett);
+			c=fgetc(fp);				//Leggi spazio
+			fgets(nul, N, fp);			//Leggi stringa
+			lett=fgetc(fp);				//Leggi lettera
+			if(lett!=f->lett)
 			{
-				c=fgetc(fp);		//Spazio
-				fgets(nul, N, fp);	//Codifica
+				goto eli;
 			}
-		}while(lett!=f->lett && feof(fp)==0);
-		
-		c=fgetc(fp);	//spazio
-		fgets(codifica, N, fp);
-		printf(codifica);
-		printf("A");
-		f->codifica=codifica;
-		if(f->dx!=NULL)
-		{
-			salvacod(f->dx);
-		}
+		}while(ftell(fp)!=end);
 	}
+	else
+	{
+eli:	c=fgetc(fp);					//Spazio
+		
+		position=ftell(fp);				//Salva posizione prima cifra
+		do
+		{
+			c=fgetc(fp);
+			i++;
+		}while(c=='1' || c=='0');		//Calcola dimensioni codifica
+		fseek(fp, position, SEEK_SET);	//Torna alla prima cifra
+		
+		char codifica[i];				//Crea array
+		fgets(codifica, N, fp);			//Leggi codifica
+		//printf("%s\n", codifica);
+		//strcpy(f->codifica, codifica);
+	}
+
+	if(f->dx!=NULL)
+	{
+		fclose(fp);
+		salvacod(f->dx);
+	}
+
 	fclose(fp);
 }
 
