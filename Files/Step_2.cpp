@@ -348,7 +348,6 @@ void salvacod(Nodo* f)
 					
 					char codifica[i];				//Crea array
 					fgets(codifica, N, fp);			//Leggi codifica
-					//f->codifica=codifica;
 					strcpy(f->codifica, codifica);
 					fclose(fp);
 					salvacod(f->sx);
