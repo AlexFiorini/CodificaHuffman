@@ -20,7 +20,7 @@ typedef struct Codifica{
 typedef struct Nodo{
     int freq;						//Somma dei nodi nel nodo intermedio
     char lett;  					//Vale (char)3 nel nodo intermedio
-    char *codifica;
+    char codifica[N];
     struct Nodo *sx;
     struct Nodo *dx;
 }Nodo;
@@ -109,8 +109,8 @@ int main()
 	fclose(fp);
 	
 	salvacod(p[0]);
-	//printf("h -> ");
-	//printf("%s", p[0]->sx->codifica);
+	printf("h -> ");
+	printf("%s", p[0]->sx->codifica);
 }
 
 Nodo* Crea(char lett, int freq)
@@ -311,50 +311,53 @@ void salvacod(Nodo* f)
 {
 	char lett, c, nul[N];
 	FILE *fp=fopen("Codifiche.txt", "r");
-	int i;
+	int i, flag=0;
 	fseek(fp, 0, SEEK_END);
 	unsigned long position, end=ftell(fp);
 	fseek(fp, 0, SEEK_SET);
-		
-	i=-1;
-	lett=fgetc(fp);						//Leggi lettera
-	if(lett!=f->lett)
+	
+	if(f!=NULL)
 	{
-		do
+		if(f->lett==(char)3)
 		{
-			c=fgetc(fp);				//Leggi spazio
-			fgets(nul, N, fp);			//Leggi stringa
-			lett=fgetc(fp);				//Leggi lettera
-			if(lett!=f->lett)
+			fclose(fp);
+			salvacod(f->sx);
+			salvacod(f->dx);	
+		}
+		else
+		{
+			do
 			{
-				goto eli;
-			}
-		}while(ftell(fp)!=end);
+				i=-1;
+				fscanf(fp, "%c", &lett);						//Leggi lettera
+				if(lett!=f->lett)
+				{
+						fscanf(fp, "%c", &c);		//Leggi spazio
+						fgets(nul, N, fp);			//Leggi stringa
+				}
+				else
+				{
+					c=fgetc(fp);					//Spazio
+					position=ftell(fp);				//Salva posizione prima cifra
+					do
+					{
+						c=fgetc(fp);
+						i++;
+					}while(c=='1' || c=='0');		//Calcola dimensioni codifica
+					fseek(fp, position, SEEK_SET);	//Torna alla prima cifra
+					
+					char codifica[i];				//Crea array
+					fgets(codifica, N, fp);			//Leggi codifica
+					//f->codifica=codifica;
+					strcpy(f->codifica, codifica);
+					fclose(fp);
+					salvacod(f->sx);
+					salvacod(f->dx);
+					flag=1;
+				}
+			}while(ftell(fp)!=end && flag!=1);
+		}
 	}
-	else
-	{
-eli:	c=fgetc(fp);					//Spazio
-		
-		position=ftell(fp);				//Salva posizione prima cifra
-		do
-		{
-			c=fgetc(fp);
-			i++;
-		}while(c=='1' || c=='0');		//Calcola dimensioni codifica
-		fseek(fp, position, SEEK_SET);	//Torna alla prima cifra
-		
-		char codifica[i];				//Crea array
-		fgets(codifica, N, fp);			//Leggi codifica
-		//printf("%s\n", codifica);
-		//strcpy(f->codifica, codifica);
-	}
-
-	if(f->dx!=NULL)
-	{
-		fclose(fp);
-		salvacod(f->dx);
-	}
-
 	fclose(fp);
 }
 
