@@ -115,7 +115,7 @@ int main()
 	printf("h -> ");
 	printf("%s", p[0]->sx->codifica);
 	
-//	printf("%s", codificapar(stringa, p[0]));
+	printf("%s", codificapar(stringa, p[0]));
 }
 
 Nodo* Crea(char lett, int freq)
@@ -353,6 +353,7 @@ void salvacod(Nodo* f)
 					
 					char codifica[i];				//Crea array
 					fgets(codifica, N, fp);			//Leggi codifica
+					//f->codifica=codifica;
 					strcpy(f->codifica, codifica);
 					fclose(fp);
 					salvacod(f->sx);
