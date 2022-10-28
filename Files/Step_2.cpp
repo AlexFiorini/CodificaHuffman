@@ -86,7 +86,7 @@ int main()
 		sommanodi(p[0], p[1]);
 	}
 
-	print2DUtil(p[0],0);
+	Stampaalbero(p[0],0);
 
 	system("pause");
 	system("cls");
