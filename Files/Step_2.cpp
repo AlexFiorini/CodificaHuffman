@@ -7,10 +7,6 @@
 #define COUNT 10
 #define N 255
 
-//ashdihewqiurhiuehzkjhdiasuhdiuheriuwheiurhw
-//Se inserisce pappagallo stampare curl parrot.live
-
-
 using namespace std;
 
 typedef struct Nodo{
@@ -38,7 +34,7 @@ char* recuperacod(char lettera);
 //Step 2.4
 void decodepar(Nodo *f, char *stringa);
 //Stampa albero
-void print2DUtil(Nodo * root, int space);
+void Stampaalbero(Nodo * root, int space);
 
 
 
@@ -89,10 +85,11 @@ int main()
 	{
 		sommanodi(p[0], p[1]);
 	}
-	
-	printf("\n\n\n\n\n\n");
-	printf("Stampa albero");
+
 	print2DUtil(p[0],0);
+
+	system("pause");
+	system("cls");
 	
 	for(i=0; i<N; i++)
 	{
@@ -106,13 +103,9 @@ int main()
 			fprintf(fp, "\n");	
 		}
 	}
-
-
-	printf("\n\n");
 	fclose(fp);
 	
 	salvacod(p[0]);
-	printf("\n\n\n\n\n");
 	parola=codificapar(stringa);
 	printf("Parola codificata: \n%s", parola);
 	printf("\n\n\n\n\n");
@@ -194,31 +187,31 @@ void selectionSort()					//Riordina array p
     int i, j, min_idx;
     
     
-    for(i=0; i<N; i++) 
+for(i=0; i<N; i++) 
+{
+if(p[i]!=NULL)
+{
+// min_idx = posizione del minore
+min_idx=i;
+
+for(j=i+1; j<N; j++)
+{
+	if(p[j]!=NULL)
 	{
-		if(p[i]!=NULL)
+		if(p[j]->freq < p[min_idx]->freq)
 		{
-			// min_idx = posizione del minore
-	        min_idx=i;
-		
-			for(j=i+1; j<N; j++)
-	        {
-	        	if(p[j]!=NULL)
-	        	{
-	        		if(p[j]->freq < p[min_idx]->freq)
-		            {
-		            	min_idx=j;
-					}
-				}
-			}
-	        if(min_idx!=i)
-	        {
-	        	Nodo* temp = p[min_idx];
-				p[min_idx] =  p[i];
-				p[i] = temp;
-			}	
+			min_idx=j;
 		}
-    }
+	}
+}
+if(min_idx!=i)
+{
+	Nodo* temp = p[min_idx];
+	p[min_idx] =  p[i];
+	p[i] = temp;
+}	
+}
+}
 }
 
 void spostanull()						//Metti i null alla fine di array p
@@ -431,19 +424,19 @@ void decodepar(Nodo *f, char *stringa)
 	
 }
 
-void print2DUtil(Nodo * root, int space) 
+void Stampaalbero(Nodo * root, int space) 
 {
     if (root == NULL)
         return;
 
 	space += COUNT;
 
-	print2DUtil(root -> dx, space);
+	Stampaalbero(root -> dx, space);
     printf("\n");
     for (int i = COUNT; i < space; i++)
         printf(" ");
 
     printf("%c\n", root -> lett);
     
-    print2DUtil(root -> sx, space);
+    Stampaalbero(root -> sx, space);
 }
