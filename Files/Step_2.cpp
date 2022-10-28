@@ -56,13 +56,12 @@ int main()
 		freq[i]=0;
 		lettere[i]=0;
 	}
-	
+	printf("Inserisci stringa\n");
 	stringa=readinput();
+	
+	system("pause");
+	system("cls");
 
-	if(strcmp(stringa, "pappagallo"))
-	{
-		system("curl parrot.live");
-	}
 	contacaratteri(stringa, freq);
 	presenza(stringa, lettere);
 	
@@ -265,7 +264,7 @@ void sommanodi(Nodo* f, Nodo* q)		//Somma i nodi e metti in nodo intermedio
 	inte->dx=(Nodo*)malloc(sizeof(Nodo));
 	inte->sx=(Nodo*)malloc(sizeof(Nodo));
 	inte->freq=f->freq+q->freq;
-	
+
 	if(f->freq>=q->freq)
 	{
 		inte->dx=f;
@@ -284,13 +283,6 @@ void sommanodi(Nodo* f, Nodo* q)		//Somma i nodi e metti in nodo intermedio
 	spostanull();
 	selectionSort();
 	spostanodiint();
-	
-	for(i=0; i<N; i++)
-	{
-		if(p[i]!=NULL)
-		printf("i=%d val=%d lett=%c\n", i, p[i]->freq, p[i]->lett);
-	}
-	printf("\n\n");
 }
 
 void codificacaratteri(Nodo* f, char lettera, char* codi)
