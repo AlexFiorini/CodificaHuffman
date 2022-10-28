@@ -36,7 +36,7 @@ void salvacod(Nodo* f);
 char* codificapar(char *stringa);
 char* recuperacod(char lettera);
 //Step 2.4
-
+void decodepar(Nodo *f, char *stringa);
 //Stampa albero
 void print2DUtil(Nodo * root, int space);
 
@@ -97,7 +97,6 @@ int main()
 		{
 			
 			codificacaratteri(p[0], (char)i, codi);
-			printf("Fatto\n");
 			fprintf(fp, "%c ", char(i));
 			fprintf(fp,"%s", codi);
 			fprintf(fp, "\n");	
@@ -112,6 +111,9 @@ int main()
 	printf("\n\n\n\n\n");
 	parola=codificapar(stringa);
 	printf("Parola codificata: \n%s", parola);
+	printf("\n\n\n\n\n");
+	printf("Stringa originale: ");
+	decodepar(p[0], parola);
 }
 
 Nodo* Crea(char lett, int freq)
@@ -402,6 +404,34 @@ char* recuperacod(char lettera)
 			fgets(car, N, fp);            //Leggi stringa
 		}
 	}
+}
+
+void decodepar(Nodo *f, char *stringa)
+{
+	int i=0;
+	do
+	{
+		if(stringa[i]=='0')
+		{
+			f=f->sx;
+			printf("%c", f->lett);
+			f=p[0];
+		}
+		else if(stringa[i]=='1')
+		{
+			if(f->dx!=NULL)
+			{
+				f=f->dx;
+				if(f->lett!=(char)3)
+				{
+					printf("%c", f->lett);
+					f=p[0];
+				}
+			}
+		}
+		i++;
+	} while(stringa[i]!='\0');
+	
 }
 
 void print2DUtil(Nodo * root, int space) 
