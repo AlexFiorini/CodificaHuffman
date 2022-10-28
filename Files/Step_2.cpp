@@ -4,7 +4,6 @@
 #include <string.h>
 #include <windows.h>
 #include <malloc.h>
-#include <bits/stdc++.h>
 #define COUNT 10
 #define N 255
 
