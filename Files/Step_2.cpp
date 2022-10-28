@@ -187,31 +187,31 @@ void selectionSort()					//Riordina array p
     int i, j, min_idx;
     
     
-for(i=0; i<N; i++) 
-{
-if(p[i]!=NULL)
-{
-// min_idx = posizione del minore
-min_idx=i;
-
-for(j=i+1; j<N; j++)
-{
-	if(p[j]!=NULL)
+	for(i=0; i<N; i++) 
 	{
-		if(p[j]->freq < p[min_idx]->freq)
+		if(p[i]!=NULL)
 		{
-			min_idx=j;
+		
+			min_idx=i; // min_idx = posizione del minore
+
+			for(j=i+1; j<N; j++)
+			{
+				if(p[j]!=NULL)
+				{
+					if(p[j]->freq < p[min_idx]->freq)
+					{
+						min_idx=j;
+					}
+				}
+			}
+			if(min_idx!=i)
+			{
+				Nodo* temp = p[min_idx];
+				p[min_idx] =  p[i];
+				p[i] = temp;
+			}
 		}
 	}
-}
-if(min_idx!=i)
-{
-	Nodo* temp = p[min_idx];
-	p[min_idx] =  p[i];
-	p[i] = temp;
-}	
-}
-}
 }
 
 void spostanull()						//Metti i null alla fine di array p
