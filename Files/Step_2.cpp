@@ -36,11 +36,13 @@ void selectionSort();
 void spostanull();
 void sommanodi(Nodo* f, Nodo* q);
 //Step 2.2
-void codificacaratteri(Nodo* f, char lettera, Codifica* codi);
+void codificacaratteri(Nodo* f, char lettera, char* codi);
 void salvacod(Nodo* f);
 //Step 2.3
 char* codificapar(char *stringa);
 char* recuperacod(char lettera);
+//Step 2.4
+
 //Stampa albero
 void print2DUtil(Nodo * root, int space);
 
@@ -51,9 +53,9 @@ Nodo **p = new Nodo *[N];
 int main()
 {	
     int i=0, j=0, freq[N], lettere[N];
-	char *stringa, *parola;
-	Codifica *codi, *pointer;
-//	FILE *fp=fopen("Codifiche.txt", "wt");
+	char *stringa, *parola, codi[N];
+	Codifica *pointer;
+	FILE *fp=fopen("Codifiche.txt", "wt");
 	
 	for(i=0; i<N; i++)
 	{
@@ -95,25 +97,23 @@ int main()
 	printf("Stampa albero");
 	print2DUtil(p[0],0);
 	
-	/*for(i=0; i<N; i++)
+	for(i=0; i<N; i++)
 	{
-		codi=(Codifica*)malloc(sizeof(Codifica));
+		strcpy(codi, "");
 		if(lettere[i]==1)
 		{
+			
 			codificacaratteri(p[0], (char)i, codi);
+			printf("Fatto\n");
 			fprintf(fp, "%c ", char(i));
-			pointer=codi;
-			do
-			{
-				fprintf(fp,"%d", pointer->val);
-				pointer=pointer->succ;
-			}while(pointer!=NULL);
-			fprintf(fp, "\n");
+			fprintf(fp,"%s", codi);
+			fprintf(fp, "\n");	
 		}
-		free(codi);
 	}
+
+
 	printf("\n\n");
-	fclose(fp);*/
+	fclose(fp);
 	
 	salvacod(p[0]);
 	printf("\n\n\n\n\n");
@@ -293,7 +293,7 @@ void sommanodi(Nodo* f, Nodo* q)		//Somma i nodi e metti in nodo intermedio
 	printf("\n\n");
 }
 
-void codificacaratteri(Nodo* f, char lettera, Codifica* codi)
+void codificacaratteri(Nodo* f, char lettera, char* codi)
 {
 	int j;
 	
@@ -303,13 +303,12 @@ void codificacaratteri(Nodo* f, char lettera, Codifica* codi)
 		{
 			if(f->sx->lett==lettera)
 			{
-				codi->val=0;
+				strcat(codi, "0");
 			}
 			else
 			{
-				codi->val=1;
-				codi->succ=(Codifica*)malloc(sizeof(Codifica));
-				codificacaratteri(f->dx, lettera, codi->succ);
+				strcat(codi,"1");
+				codificacaratteri(f->dx, lettera, codi);
 			}
 		}
 	}
