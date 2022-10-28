@@ -13,11 +13,6 @@
 
 using namespace std;
 
-typedef struct Codifica{
-	int val;
-	struct Codifica *succ;
-}Codifica;
-
 typedef struct Nodo{
     int freq;						//Somma dei nodi nel nodo intermedio
     char lett;  					//Vale (char)3 nel nodo intermedio
@@ -53,7 +48,6 @@ int main()
 {	
     int i=0, j=0, freq[N], lettere[N];
 	char *stringa, *parola, codi[N];
-	Codifica *pointer;
 	FILE *fp=fopen("Codifiche.txt", "wt");
 	
 	for(i=0; i<N; i++)
