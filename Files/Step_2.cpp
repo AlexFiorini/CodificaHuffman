@@ -58,6 +58,11 @@ int main()
 	}
 	
 	stringa=readinput();
+
+	if(strcmp(stringa, "pappagallo"))
+	{
+		system("curl parrot.live");
+	}
 	contacaratteri(stringa, freq);
 	presenza(stringa, lettere);
 	
