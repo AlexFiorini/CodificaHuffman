@@ -87,9 +87,8 @@ int main()
 	}
 
 	Stampaalbero(p[0],0);
-
-	system("pause");
-	system("cls");
+	
+	printf("\n");
 	
 	for(i=0; i<N; i++)
 	{
@@ -98,6 +97,8 @@ int main()
 		{
 			
 			codificacaratteri(p[0], (char)i, codi);
+			printf("%c ", (char)i);
+			printf("%s\n", codi);
 			fprintf(fp, "%c ", char(i));
 			fprintf(fp,"%s", codi);
 			fprintf(fp, "\n");	
@@ -107,8 +108,8 @@ int main()
 	
 	salvacod(p[0]);
 	parola=codificapar(stringa);
-	printf("Parola codificata: \n%s", parola);
-	printf("\n\n\n\n\n");
+	printf("\n");
+	printf("Parola codificata: %s\n", parola);
 	printf("Stringa originale: ");
 	decodepar(p[0], parola);
 }
